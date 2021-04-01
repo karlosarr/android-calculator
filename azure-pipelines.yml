@@ -10,6 +10,12 @@ pool:
   vmImage: 'macos-latest'
 
 steps:
+- task: DownloadSecureFile@1
+  name: jksfile
+  inputs:
+    secureFile: 'keystore.jks'
+  displayName: 'Download keystore.jks'
+  condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'main') )
 
 - task: Gradle@2
   inputs:
@@ -21,6 +27,14 @@ steps:
     sonarQubeRunAnalysis: false
     checkStyleRunAnalysis: true
 
+- task: AndroidSigning@3
+  inputs:
+    apkFiles: '**/*.apk'
+    apksignerKeystoreFile: '$(jksfile.secureFilePath)'
+    apksignerKeystorePassword: '${env:KEY_STORE_PASSWORD}'
+    apksignerKeystoreAlias: 'calculator'
+    apksignerKeyPassword: '${env:KEY_STORE_PASSWORD}'
+    apksignerFile: '**/*.apk'
 
 - task: CopyFiles@2
   inputs:
