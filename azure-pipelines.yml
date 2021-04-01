@@ -36,6 +36,11 @@ steps:
     apksignerKeyPassword: '${env:KEY_STORE_PASSWORD}'
     apksignerFile: '**/*.apk'
 
+- script: |
+    cp $(envfileproduction.secureFilePath) keystore.jks
+  displayName: 'Create environment production'
+  condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'master') )
+
 - task: CopyFiles@2
   inputs:
     contents: '**/*.apk'
