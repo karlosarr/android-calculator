@@ -30,10 +30,10 @@ steps:
 - task: AndroidSigning@3
   inputs:
     apkFiles: '**/*.apk'
-    apksignerKeystoreFile: 'keystore.jks'
-    apksignerKeystorePassword: '${env:KEY_STORE_PASSWORD}'
+    apksignerKeystoreFile: '$(jksfile.secureFilePath)'
+    apksignerKeystorePassword: '$(KEY_STORE_PASSWORD)'
     apksignerKeystoreAlias: 'calculator'
-    apksignerKeyPassword: '${env:KEY_STORE_PASSWORD}'
+    apksignerKeyPassword: '$(KEY_STORE_PASSWORD)'
     apksignerFile: '**/*.apk'
 
 - script: |
