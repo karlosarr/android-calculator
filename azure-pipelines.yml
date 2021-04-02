@@ -26,11 +26,6 @@ steps:
     gradleOptions: '-Xmx3072m'
     sonarQubeRunAnalysis: false
     checkStyleRunAnalysis: true
-    
-- script: |
-    cp $(envfileproduction.secureFilePath) keystore.jks
-  displayName: 'Create environment production'
-  condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'main') )
 
 - task: AndroidSigning@3
   inputs:
