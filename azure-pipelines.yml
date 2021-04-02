@@ -29,12 +29,13 @@ steps:
 
 - task: AndroidSigning@3
   inputs:
-    apkFiles: '**/*.apk'
+    apkFiles: 'app/build/outputs/apk/release/app-release-unsigned.apk'
     apksignerKeystoreFile: 'keystore.jks'
     apksignerKeystorePassword: '$(KEY_STORE_PASSWORD)'
     apksignerKeystoreAlias: 'calculator'
     apksignerKeyPassword: '$(KEY_STORE_PASSWORD)'
-    apksignerFile: 'app/outputs/apk/release/*.apk'
+    apksignerFile: 'app/outputs/apk/release/'
+    zipalign: false
 
 - task: CopyFiles@2
   inputs:
