@@ -34,7 +34,7 @@ steps:
     apksignerKeystorePassword: '$(KEY_STORE_PASSWORD)'
     apksignerKeystoreAlias: 'calculator'
     apksignerKeyPassword: '$(KEY_STORE_PASSWORD)'
-    apksignerFile: 'app/build/outputs/apk/release/app-release.apk'
+    apksignerFile: '$(build.artifactStagingDirectory)'
     zipalign: false
 
 - task: CopyFiles@2
