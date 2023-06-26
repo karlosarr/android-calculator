@@ -16,7 +16,11 @@ steps:
     secureFile: 'keystore.jks'
   displayName: 'Download keystore.jks'
   condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'main') )
-
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'karlosarr'
+    scannerMode: 'Other'
 - task: Gradle@2
   inputs:
     gradleWrapperFile: 'gradlew'
