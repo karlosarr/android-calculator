@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id "org.sonarqube" version "4.2.1.3168"
 }
 
 android {
@@ -48,12 +47,4 @@ dependencies {
     def appCenterSdkVersion = '4.1.0'
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
-}
-
-sonarqube {
-  properties {
-    property "sonar.projectKey", "karlosarr_android-calculator"
-    property "sonar.organization", "karlosarr"
-    property "sonar.host.url", "https://sonarcloud.io"
-  }
 }
