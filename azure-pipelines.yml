@@ -24,6 +24,7 @@ steps:
 - task: Gradle@2
   inputs:
     gradleWrapperFile: 'gradlew'
+    options: '--warning-mode all'
     tasks: 'assembleRelease'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
