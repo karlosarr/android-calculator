@@ -33,7 +33,9 @@ steps:
     sonarQubeGradlePluginVersion: '2.6.1'
     checkStyleRunAnalysis: true
     spotBugsAnalysis: false
-
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 - task: AndroidSigning@3
   inputs:
     apkFiles: 'app/build/outputs/apk/release/app-release-unsigned.apk'
